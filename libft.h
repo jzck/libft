@@ -10,7 +10,7 @@
 # define FT_POS(x) (((x) > 0) ? 1 : 0)
 # define FT_MIN(a, b) ((a) < (b) ? (a) : (b))
 # define FT_MAX(a, b) ((a) > (b) ? (a) : (b))
-# define FAT_DIST(a, b) (ABS((a) - (b)))
+# define FT_DIST(a, b) (ABS((a) - (b)))
 
 typedef struct	s_list
 {
