@@ -19,8 +19,6 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-void	ft_debug(void);
-
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
@@ -81,28 +79,11 @@ void	ft_lstadd(t_list **alst, t_list *new);
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
-void	ft_lst_sort(t_list **begin_list, int (*cmp)());
-void	ft_lst_print(t_list *list, void (*printer)());
-int		ft_lstsize(t_list *lst);
-void	ft_lsteadd(t_list **alst, t_list *new);
-void	ft_lstnadd(t_list **alst, t_list *new, int n);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lst_sorted_merge(t_list **begin_list1, t_list *begin_list2, int (*cmp)());
-void	ft_lst_sorted_insert(t_list **begin_list, t_list *insert, int (*cmp)());
-t_list	*ft_lstnew_range(int a, int b);
-void	ft_lst_delif(t_list **alist, void *data_ref, int (*cmp)(), void (*del)(void *, size_t));
-void	ft_lst_delsub(t_list **alst, t_list *sub, int (*cmp)(), void (*del)(void *, size_t));
-void	ft_lst_cfree(void *ptr, size_t size);
-t_list	*ft_lst_filter(t_list *lst, void const *data_ref, t_list *(*f)(t_list *elem, void const *));
-t_list	*ft_lst_removeif(t_list **alst, void *data_ref, int (*cmp)());
-t_list	*ft_lst_find(t_list *begin_list, void *data_ref, int (*cmp)());
-t_list	*ft_lstpop(t_list **lst);
-
-int		ft_diff(void *a, void *b);
+void	ft_debug(void);
 char	*ft_strrev(char *str);
-t_list	*ft_id(t_list *a);
 char	*ft_itoa_base(int nbr, char *base, char *flags);
 char	*ft_lltoa_base(long long nbr, char *base, char *flags);
 char	*ft_ulltoa_base(unsigned long long nbr, char *base);
 char	*ft_uitoa_base(unsigned int nbr, char *base);
+char	*ft_strcatf(char *s1, const char *s2);
 #endif
