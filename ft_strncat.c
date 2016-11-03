@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/07 10:57:07 by jhalford          #+#    #+#             */
-/*   Updated: 2016/08/07 10:57:11 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/03 15:02:27 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	size_t	size;;
+	size_t	size;
 	size_t	j;
 
 	size = ft_strlen(s1);

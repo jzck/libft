@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 14:58:28 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/03 14:58:29 by jhalford         ###   ########.fr       */
+/*   Created: 2016/11/03 15:18:57 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/03 16:40:21 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	size_t	size;
-	size_t	i;
-	char	*out;
-
-	size = ft_strlen(s);
-	out = (char *)malloc(sizeof(char) * (size + 1));
-	if (out == NULL)
-		return (NULL);
-	i = -1;
-	while (++i < size)
-		out[i] = (*f)(i, s[i]);
-	return (out);
+	if ((*alst)->next)
+		ft_lstdel(&(*alst)->next, del);
+	ft_lstdelone(&(*alst), del);
 }
