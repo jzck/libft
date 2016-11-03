@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 14:58:22 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/03 14:58:23 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/03 19:39:15 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 size_t	ft_strlen(const char *s)
 {
-	int	i;
+	char	*a;
 
-	i = 0;
-	if (!s)
+	if (!s || !*s)
 		return (0);
-	while (s[i])
-		i++;
-	return (i);
+	a = (char *)s;
+	while (*a)
+		a++;
+	return (a - s);
 }
