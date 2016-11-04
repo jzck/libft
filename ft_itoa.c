@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 14:57:10 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/03 15:27:16 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/04 11:31:57 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ char			*ft_itoa(int n)
 
 	i = 0;
 	str = ft_strnew(ft_size(n) + 1);
+	if (!str)
+		return (NULL);
 	neg = FT_NEG(n) ? 1 : 0;
 	if (n == 0)
 	{

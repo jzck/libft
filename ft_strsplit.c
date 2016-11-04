@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 14:58:40 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/03 19:15:58 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/04 11:28:31 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static char	**alloc_table(char **table, const char *str, char c)
 	if (str[i - 1] != c)
 		n_words++;
 	table = (char**)malloc(sizeof(*table) * (n_words + 10));
+	if (!table)
+		return (NULL);
 	table[n_words] = 0;
 	return (table);
 }
@@ -55,6 +57,8 @@ static char	**alloc_words(char **table, const char *str, char c)
 		if (str[i] == c || !str[i])
 		{
 			table[j] = (char*)malloc(sizeof(**table) * (k + 10));
+			if (!table[j])
+				return (NULL);
 			j++;
 			k = 0;
 			while (str[i] == c)
