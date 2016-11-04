@@ -16,6 +16,7 @@ F_OBJ	:=	$(F_SRC:.c=.o)
 F_OBJ	:=	$(addprefix $(D_OBJ)/, $(F_OBJ))
 
 .PHONY: all clean fclean re
+.NOTPARALLEL:
 
 all: $(NAME)
 
