@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_time_isrecent.c                                 :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/03 18:01:04 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/03 18:01:19 by jhalford         ###   ########.fr       */
+/*   Created: 2016/08/07 10:49:12 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/05 11:22:29 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_time_isrecent(time_t event)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	time_t	now;
+	int	i;
 
-	now = time(&now);
-	if (now - event > 0 && now - event < 6 * 365 / 12 * 24 * 60 * 60)
-		return (1);
+	i = 0;
+	while (*(s1 + i) && *(s1 + i) == *(s2 + i) && i < (int)n)
+		i++;
+	if (i < (int)n)
+		return (*((unsigned char*)s1 + i) - *((unsigned char*)s2 + i));
 	else
 		return (0);
 }

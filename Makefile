@@ -2,7 +2,7 @@ NAME	=	libft.a
 CC		=	gcc
 AR		=	ar -rc
 
-D_SRC	=	src
+D_SRC	=	.
 D_OBJ	=	obj
 
 O_FLAGS	=
@@ -11,19 +11,18 @@ DEBUG	=
 MKDIR	=	mkdir -p
 RM		=	/bin/rm -rf
 
-D_INC	=	includes
-
-F_SRC	:=	$(shell find $(D_SRC) -type f -regex ".*\.c$$")
-F_OBJ	:=	$(addprefix $(D_OBJ)/, $(notdir $(F_SRC:.c=.o)))
+F_SRC	:=	$(shell ls -1 $(D_SRC) | grep "\.c$$")
+F_OBJ	:=	$(F_SRC:.c=.o)
+F_OBJ	:=	$(addprefix $(D_OBJ)/, $(F_OBJ))
 
 .PHONY: all clean fclean re
 .NOTPARALLEL:
 
 all: $(NAME)
 
-$(D_OBJ)/%.o: $(D_SRC)/*/%.c
+$(D_OBJ)/%.o: $(D_SRC)/%.c
 	@$(MKDIR) $(D_OBJ)
-	@$(CC) -I$(D_INC) $(W_FLAGS) -c $< -o $@ $(DEBUG)
+	@$(CC) $(W_FLAGS) -c $< -o $@ $(DEBUG)
 	@echo "(libft) Compiling "$<"..."
 
 $(NAME): $(F_OBJ)

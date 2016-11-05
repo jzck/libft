@@ -11,31 +11,17 @@
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
-<<<<<<< HEAD:includes/libft.h
-#define LIBFT_H
-
-# include "ftxattr.h"
-# include "lst.h"
-# include "dlst.h"
-
-=======
 # define LIBFT_H
->>>>>>> 1f1cb4b14d273f8950585bfb2f8033e3674a5783:libft.h
 # include <string.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <time.h>
-
-# define FT_WS(x) (x == ' ' || x == '\t' || x == '\n')
+# define FT_SEP(x) (x == ' ' || x == '\t' || x == '\n')
 # define FT_ABS(x) (((x) < 0) ? -(x) : (x))
 # define FT_NEG(x) (((x) < 0) ? 1 : 0)
 # define FT_POS(x) (((x) > 0) ? 1 : 0)
 # define FT_MIN(a, b) ((a) < (b) ? (a) : (b))
 # define FT_MAX(a, b) ((a) > (b) ? (a) : (b))
-<<<<<<< HEAD:includes/libft.h
-# define FT_DIST(a, b) (FT_ABS((a) - (b)))
-=======
 # define FT_DIST(a, b) (ABS((a) - (b)))
 
 struct	s_list
@@ -44,7 +30,6 @@ struct	s_list
 	size_t			content_size;
 	struct s_list	*next;
 };
->>>>>>> 1f1cb4b14d273f8950585bfb2f8033e3674a5783:libft.h
 
 typedef struct s_list	t_list;
 
@@ -93,7 +78,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s);
 char	**ft_strsplit(char const *s, char c);
 char	*ft_itoa(int n);
-int		ft_putchar(int c);
+void	ft_putchar(char c);
 void	ft_putstr(char const *s);
 void	ft_putendl(char const *s);
 void	ft_putnbr(int n);
@@ -102,33 +87,6 @@ void	ft_putstr_fd(char const *s, int fd);
 void	ft_putendl_fd(char const *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-<<<<<<< HEAD:includes/libft.h
-char	*ft_strrev(char *str);
-char	**ft_strsplit(char const *s, char c);
-char	*ft_str3join(char const *s1, char const *s2, char const *s3);
-char	*ft_strcut(char *str, char *cut);
-char	**ft_split_whitespaces(char *str);
-char	*ft_convert_base(char *str, char *base_from, char *base_to, char *flags);
-
-char	*ft_itoa_base(int nbr, char *base, char *flags);
-char	*ft_lltoa_base(long long nbr, char *base, char *flags);
-char	*ft_ulltoa_base(unsigned long long nbr, char *base);
-char	*ft_uitoa_base(unsigned int nbr, char *base);
-size_t	ft_ilen(int n);
-size_t	ft_uilen(unsigned int n);
-
-void	ft_sstrsort(char **list, int size, int (*cmp)());
-void	ft_sstrprint(char **list, char sep);
-char	**ft_sstrdup(char **list);
-char	**ft_sstradd(char **list, char *new);
-void	ft_sstrdel(char **sstr, int index);
-
-int		ft_time_isrecent(time_t event);
-
-char	*ft_path_notdir(char *path);
-
-int		ft_printf(const char *format, ...);
-=======
 t_list	*ft_lstnew(void const *content, size_t content_size);
 void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t));
@@ -136,5 +94,4 @@ void	ft_lstadd(t_list **alst, t_list *new);
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
->>>>>>> 1f1cb4b14d273f8950585bfb2f8033e3674a5783:libft.h
 #endif
