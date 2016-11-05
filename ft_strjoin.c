@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/07 10:49:02 by jhalford          #+#    #+#             */
-<<<<<<< HEAD:src/str/ft_strcmp.c
-/*   Updated: 2016/11/03 16:08:51 by jhalford         ###   ########.fr       */
-=======
-/*   Updated: 2016/11/05 11:22:15 by jhalford         ###   ########.fr       */
->>>>>>> 1f1cb4b14d273f8950585bfb2f8033e3674a5783:ft_strcmp.c
+/*   Created: 2016/11/03 14:58:18 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/04 11:28:00 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	i;
+	char	*join;
 
-	i = 0;
-	while (*(s1 + i) && *(s1 + i) == *(s2 + i))
-		i++;
-	return (*((unsigned char*)s1 + i) - *((unsigned char*)s2 + i));
+	if (!s1 || !s2)
+		return (NULL);
+	join = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!join)
+		return (NULL);
+	ft_strcpy(join, s1);
+	ft_strcat(join, s2);
+	return (join);
 }

@@ -6,7 +6,11 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 14:58:40 by jhalford          #+#    #+#             */
+<<<<<<< HEAD:src/str/ft_strsplit.c
 /*   Updated: 2016/11/03 15:00:19 by jhalford         ###   ########.fr       */
+=======
+/*   Updated: 2016/11/05 11:17:14 by jhalford         ###   ########.fr       */
+>>>>>>> 1f1cb4b14d273f8950585bfb2f8033e3674a5783:ft_strsplit.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +37,8 @@ static char	**alloc_table(char **table, const char *str, char c)
 	}
 	if (str[i - 1] != c)
 		n_words++;
-	table = (char**)malloc(sizeof(*table) * (n_words + 10));
+	if (!(table = (char**)malloc(sizeof(*table) * (n_words + 10))))
+		return (NULL);
 	table[n_words] = 0;
 	return (table);
 }
@@ -54,7 +59,8 @@ static char	**alloc_words(char **table, const char *str, char c)
 		i++;
 		if (str[i] == c || !str[i])
 		{
-			table[j] = (char*)malloc(sizeof(**table) * (k + 10));
+			if (!(table[j] = (char*)malloc(sizeof(**table) * (k + 10))))
+				return (NULL);
 			j++;
 			k = 0;
 			while (str[i] == c)
@@ -97,9 +103,13 @@ char		**ft_strsplit(char const *s, char c)
 {
 	char	**table;
 
+	if (!s)
+		return (NULL);
 	table = 0;
-	table = alloc_table(table, s, c);
-	table = alloc_words(table, s, c);
+	if (!(table = alloc_table(table, s, c)))
+		return (NULL);
+	if (!(table = alloc_words(table, s, c)))
+		return (NULL);
 	table = fill_table(table, s, c);
 	return (table);
 }

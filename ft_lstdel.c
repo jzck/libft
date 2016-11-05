@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/07 10:49:02 by jhalford          #+#    #+#             */
-<<<<<<< HEAD:src/str/ft_strcmp.c
-/*   Updated: 2016/11/03 16:08:51 by jhalford         ###   ########.fr       */
-=======
-/*   Updated: 2016/11/05 11:22:15 by jhalford         ###   ########.fr       */
->>>>>>> 1f1cb4b14d273f8950585bfb2f8033e3674a5783:ft_strcmp.c
+/*   Created: 2016/11/03 15:18:57 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/03 16:40:21 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	int	i;
-
-	i = 0;
-	while (*(s1 + i) && *(s1 + i) == *(s2 + i))
-		i++;
-	return (*((unsigned char*)s1 + i) - *((unsigned char*)s2 + i));
+	if ((*alst)->next)
+		ft_lstdel(&(*alst)->next, del);
+	ft_lstdelone(&(*alst), del);
 }

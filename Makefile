@@ -17,6 +17,7 @@ F_SRC	:=	$(shell find $(D_SRC) -type f -regex ".*\.c$$")
 F_OBJ	:=	$(addprefix $(D_OBJ)/, $(notdir $(F_SRC:.c=.o)))
 
 .PHONY: all clean fclean re
+.NOTPARALLEL:
 
 all: $(NAME)
 

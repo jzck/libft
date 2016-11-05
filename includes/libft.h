@@ -1,10 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/03 15:00:29 by jhalford          #+#    #+#             */
+/*   Updated: 2016/11/04 10:08:47 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
+<<<<<<< HEAD:includes/libft.h
 #define LIBFT_H
 
 # include "ftxattr.h"
 # include "lst.h"
 # include "dlst.h"
 
+=======
+# define LIBFT_H
+>>>>>>> 1f1cb4b14d273f8950585bfb2f8033e3674a5783:libft.h
 # include <string.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -17,9 +33,20 @@
 # define FT_POS(x) (((x) > 0) ? 1 : 0)
 # define FT_MIN(a, b) ((a) < (b) ? (a) : (b))
 # define FT_MAX(a, b) ((a) > (b) ? (a) : (b))
+<<<<<<< HEAD:includes/libft.h
 # define FT_DIST(a, b) (FT_ABS((a) - (b)))
+=======
+# define FT_DIST(a, b) (ABS((a) - (b)))
 
-void	ft_debug(void);
+struct	s_list
+{
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+};
+>>>>>>> 1f1cb4b14d273f8950585bfb2f8033e3674a5783:libft.h
+
+typedef struct s_list	t_list;
 
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
@@ -75,6 +102,7 @@ void	ft_putstr_fd(char const *s, int fd);
 void	ft_putendl_fd(char const *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
+<<<<<<< HEAD:includes/libft.h
 char	*ft_strrev(char *str);
 char	**ft_strsplit(char const *s, char c);
 char	*ft_str3join(char const *s1, char const *s2, char const *s3);
@@ -100,4 +128,13 @@ int		ft_time_isrecent(time_t event);
 char	*ft_path_notdir(char *path);
 
 int		ft_printf(const char *format, ...);
+=======
+t_list	*ft_lstnew(void const *content, size_t content_size);
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+void	ft_lstadd(t_list **alst, t_list *new);
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+
+>>>>>>> 1f1cb4b14d273f8950585bfb2f8033e3674a5783:libft.h
 #endif
