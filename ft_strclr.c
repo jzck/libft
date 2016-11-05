@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 14:57:54 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/03 14:57:55 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/05 11:24:21 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_strclr(char *s)
 	size_t	size;
 	size_t	i;
 
+	if (!s)
+		return ;
 	size = ft_strlen(s);
 	i = -1;
 	while (++i < size)
