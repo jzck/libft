@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 15:00:29 by jhalford          #+#    #+#             */
-/*   Updated: 2016/11/04 10:08:47 by jhalford         ###   ########.fr       */
+/*   Updated: 2016/11/08 16:34:48 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,11 @@ void	ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void	ft_lstadd(t_list **alst, t_list *new);
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+
+char	**ft_sstradd(char **list, char *new);
+void	ft_sstrsort(char **list, int size, int (*cmp)());
+void	ft_sstrprint(char **list, char sep);
+char	**ft_sstrdup(char **list);
+void	ft_sstrdel(char **sstr, int index);
 
 #endif
