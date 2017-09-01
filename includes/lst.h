@@ -89,5 +89,6 @@ void	lst_insert_sort(t_list **head,
 		int (cmp)());
 
 t_list	*ft_lst_pop(t_list **lst);
+char	*ft_lst2str(t_list *list);
 
 #endif

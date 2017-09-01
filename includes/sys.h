@@ -17,7 +17,7 @@
 # define STDIN			STDIN_FILENO
 # define STDOUT			STDOUT_FILENO
 # define STDERR			STDERR_FILENO
-# define STDBUG			3
+# define STDBUG			9
 
 # define PIPE_READ		0
 # define PIPE_WRITE		1
