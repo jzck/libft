@@ -36,7 +36,7 @@ void hexdump(void *pAddressIn, long  lSize)
       {
          ucTmp = *pTmp++;
 
-         sprintf(szBuf + lIndex, "%02X ", (unsigned short)ucTmp);
+         sprintf(szBuf + lIndex, "%02x ", (unsigned short)ucTmp);
          if(!isprint(ucTmp))  ucTmp = '.'; // nonprintable char
          szBuf[lIndex2] = ucTmp;
 

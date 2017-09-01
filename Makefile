@@ -135,6 +135,9 @@ net/create_client.c\
 net/create_server.c\
 net/net_get.c\
 net/net_send.c\
+net/forge_tcp.c\
+net/forge_ip.c\
+net/reserve_port.c\
 path/ft_path_notdir.c\
 printing/ft_putchar.c\
 printing/ft_putendl.c\
@@ -201,6 +204,7 @@ str/ft_strtrim.c\
 time/ft_mytime_free.c\
 time/ft_mytime_get.c\
 time/ft_time_isrecent.c\
+time/epoch.c\
 sys/open_new.c\
 htb/ft_hash_string.c\
 htb/hashtab_init.c\
