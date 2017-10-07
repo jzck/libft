@@ -23,7 +23,6 @@ INC_DIR		=	includes/
 OBJ_DIR		=	objs/
 
 SRC_BASE	= \
-rs/rs.c\
 btree/btree_apply_by_level.c\
 btree/btree_apply_infix.c\
 btree/btree_apply_prefix.c\
@@ -75,6 +74,7 @@ ft_printf/lib_pad.c\
 ft_printf/lib_pad_sharp.c\
 get_next_line/get_next_line.c\
 lst/ft_id.c\
+lst/ft_lst2str.c\
 lst/ft_lst_at.c\
 lst/ft_lst_bfree.c\
 lst/ft_lst_cfree.c\
@@ -85,6 +85,7 @@ lst/ft_lst_filterout.c\
 lst/ft_lst_find.c\
 lst/ft_lst_merge.c\
 lst/ft_lst_order_delsub.c\
+lst/ft_lst_pop.c\
 lst/ft_lst_print.c\
 lst/ft_lst_print2.c\
 lst/ft_lst_removeif.c\
@@ -104,11 +105,9 @@ lst/ft_lstnew.c\
 lst/ft_lstnew_range.c\
 lst/ft_lstsort.c\
 lst/lst_insert_sort.c\
-lst/ft_lst_pop.c\
 lst/pop.c\
 lst/push.c\
 lst/top.c\
-lst/ft_lst2str.c\
 math/ft_addrcmp.c\
 math/ft_ilen.c\
 math/ft_ilen_base.c\
@@ -134,10 +133,10 @@ mem/ft_memset.c\
 mem/ft_realloc.c\
 net/create_client.c\
 net/create_server.c\
+net/forge_ip.c\
+net/forge_tcp.c\
 net/net_get.c\
 net/net_send.c\
-net/forge_tcp.c\
-net/forge_ip.c\
 net/reserve_port.c\
 path/ft_path_notdir.c\
 printing/ft_putchar.c\
@@ -145,6 +144,7 @@ printing/ft_putendl.c\
 printing/ft_putnbr.c\
 printing/ft_putstr.c\
 printing/hexdump.c\
+rs/rs.c\
 sstr/ft_sstradd.c\
 sstr/ft_sstrcat.c\
 sstr/ft_sstrdel.c\
@@ -155,7 +155,6 @@ sstr/ft_sstrprint.c\
 sstr/ft_sstrprint_fd.c\
 sstr/ft_sstrsort.c\
 sstr/ft_sstrstr.c\
-str/ft_strsepjoin.c\
 str/ft_atoi.c\
 str/ft_convert_base.c\
 str/ft_putaddr_fd.c\
@@ -174,7 +173,6 @@ str/ft_strcspn.c\
 str/ft_strcut.c\
 str/ft_strdel.c\
 str/ft_strdup.c\
-str/ft_strndup.c\
 str/ft_strdupchr.c\
 str/ft_strduptr.c\
 str/ft_strequ.c\
@@ -191,31 +189,24 @@ str/ft_strmapi.c\
 str/ft_strncat.c\
 str/ft_strncmp.c\
 str/ft_strncpy.c\
+str/ft_strndup.c\
 str/ft_strnequ.c\
 str/ft_strnew.c\
 str/ft_strnstr.c\
 str/ft_strrchr.c\
 str/ft_strreplace.c\
 str/ft_strrev.c\
+str/ft_strsepjoin.c\
 str/ft_strsplit.c\
 str/ft_strstr.c\
 str/ft_strsub.c\
 str/ft_strtok.c\
 str/ft_strtrim.c\
+sys/open_new.c\
+time/epoch.c\
 time/ft_mytime_free.c\
 time/ft_mytime_get.c\
-time/ft_time_isrecent.c\
-time/epoch.c\
-sys/open_new.c\
-htb/ft_hash_string.c\
-htb/hashtab_init.c\
-htb/hashtab_insert.c\
-htb/hashtab_lookup.c\
-htb/hashtab_remove.c\
-htb/hashtab_destroy.c\
-htb/hashtab_print.c\
-htb/hashtab_generator.c\
-htb/hashtab_del.c\
+time/ft_time_isrecent.c
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
@@ -241,7 +232,7 @@ $(OBJ_DIR)%.o :	$(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(eval COLOR=$(shell list=(160 196 202 208 215 221 226 227 190 154 118 82 46); index=$$(($(PERCENT) * $${#list[@]} / 100)); echo "$${list[$$index]}"))
 	@printf "\r\033[38;5;%dm⌛ [%s]: %2d%% `printf '█%.0s' {0..$(DONE)}`%*s❙%*.*s\033[0m\033[K" $(COLOR) $(NAME) $(PERCENT) $(TO_DO) "" $(DELTA) $(DELTA) "$(shell echo "$@" | sed 's/^.*\///')"
 	@$(CC) $(FLAGS) -MMD -c $< -o $@\
-		-I $(INC_DIR) -lm
+		-I $(INC_DIR)
 	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 
 clean :

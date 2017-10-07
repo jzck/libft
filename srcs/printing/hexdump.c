@@ -1,57 +1,48 @@
-#include <stdio.h>
-#include <ctype.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hexdump.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/07 17:56:14 by jhalford          #+#    #+#             */
+/*   Updated: 2017/10/07 17:56:40 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include <stdio.h>
 #include "libft.h"
 
-void hexdump(void *pAddressIn, long  lSize)
+static void	print_hex_contents(void *addr, unsigned int size)
 {
- char szBuf[100];
- long lIndent = 1;
- long lOutLen, lIndex, lIndex2, lOutLen2;
- long lRelPos;
- struct { char *pData; unsigned long lSize; } buf;
- unsigned char *pTmp,ucTmp;
- unsigned char *pAddress = (unsigned char *)pAddressIn;
+	void	*a;
 
-   buf.pData   = (char *)pAddress;
-   buf.lSize   = lSize;
+	a = addr;
+	while (a - addr < 16)
+	{
+		if ((a - addr) >= size)
+			break ;
+		else
+			ft_printf("%02x", *(unsigned char*)a);
+		ft_putchar(' ');
+		a++;
+	}
+}
 
-   while (buf.lSize > 0)
-   {
-      pTmp     = (unsigned char *)buf.pData;
-      lOutLen  = (int)buf.lSize;
-      if (lOutLen > 16)
-          lOutLen = 16;
+void		*hexdump(void *addr, unsigned int offset, unsigned int size)
+{
+	void	*a;
 
-      // create a 64-character formatted output line:
-      sprintf(szBuf, " >                            "
-                     "                      "
-                     "    %08lX", pTmp-pAddress);
-      lOutLen2 = lOutLen;
-
-      for(lIndex = 1+lIndent, lIndex2 = 53-15+lIndent, lRelPos = 0;
-          lOutLen2;
-          lOutLen2--, lIndex += 2, lIndex2++
-         )
-      {
-         ucTmp = *pTmp++;
-
-         sprintf(szBuf + lIndex, "%02x ", (unsigned short)ucTmp);
-         if(!isprint(ucTmp))  ucTmp = '.'; // nonprintable char
-         szBuf[lIndex2] = ucTmp;
-
-         if (!(++lRelPos & 3))     // extra blank after 4 bytes
-         {  lIndex++; szBuf[lIndex+2] = ' '; }
-      }
-
-      if (!(lRelPos & 3)) lIndex--;
-
-      szBuf[lIndex  ]   = '<';
-      szBuf[lIndex+1]   = ' ';
-
-      printf("%s\n", szBuf);
-
-      buf.pData   += lOutLen;
-      buf.lSize   -= lOutLen;
-   }
+	addr += offset;
+	a = addr;
+	if (addr == NULL)
+		return (addr);
+	while ((a - addr) < size)
+	{
+		ft_printf("%0*llx\t", 16, (a - addr) + (unsigned long)offset);
+		print_hex_contents(a, (size - (a - addr)));
+		ft_putchar('\n');
+		a += 16;
+	}
+	return (addr);
 }

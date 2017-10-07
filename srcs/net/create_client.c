@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_client.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/07 17:59:28 by jhalford          #+#    #+#             */
+/*   Updated: 2017/10/07 18:02:25 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 int		create_client(char *addr, int port, char *protoname)
@@ -17,25 +29,29 @@ int		create_client(char *addr, int port, char *protoname)
 	return (sock);
 }
 
-void	listener(int domain, int sock, int proto, void (*handler)(void *buf, int bytes, struct sockaddr_in *addr))
-{	int sd;
-	struct sockaddr_in addr;
-	unsigned char buf[1024];
+void	listener(int domain, int sock, int proto,
+		void (*handler)(void *buf, int bytes, struct sockaddr_in *addr))
+{
+	int					sd;
+	struct sockaddr_in	addr;
+	unsigned char		buf[1024];
+	int					bytes;
+	socklen_t			len;
 
+	len = sizeof(addr);
 	sd = socket(domain, sock, proto);
 	if (sd < 0)
 	{
 		perror("listener socket");
 		exit(0);
 	}
-	for (;;)
-	{	int bytes;
-		socklen_t len=sizeof(addr);
-
+	while (1)
+	{
 		bzero(buf, sizeof(buf));
-		bytes = recvfrom(sd, buf, sizeof(buf), 0, (struct sockaddr*)&addr, &len);
+		bytes = recvfrom(sd, buf, sizeof(buf), 0,
+				(struct sockaddr*)&addr, &len);
 		if (bytes > 0 && handler)
-				handler(buf, bytes, &addr);
+			handler(buf, bytes, &addr);
 		else
 			perror("recvfrom");
 	}

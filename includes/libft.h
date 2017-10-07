@@ -6,7 +6,7 @@
 /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 13:49:04 by jhalford          #+#    #+#             */
-/*   Updated: 2017/05/16 17:47:18 by ariard           ###   ########.fr       */
+/*   Updated: 2017/10/07 18:07:31 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 # include "lst.h"
 # include "dlst.h"
 # include "btree.h"
-# include "hashtab.h"
 
 # include "str.h"
 # include "sstr.h"
@@ -90,7 +89,7 @@ int		ft_putendl_fd(char const *s, int fd);
 int		ft_putnbr_fd(long n, int fd);
 int		ft_putnbr_hex_fd(long n, int fd);
 
-void	hexdump(void *pAddressIn, long  lSize);
+void	*hexdump(void *addr, unsigned int offset, unsigned int size);
 
 void	*ft_realloc(void *data, int size);
 

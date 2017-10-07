@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   open_new.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/07 17:56:58 by jhalford          #+#    #+#             */
+/*   Updated: 2017/10/07 17:57:28 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /*
@@ -18,9 +30,9 @@ int		open_new(char *filename, int oflag)
 	while (i < 10 && (fd = open(fname, oflag | O_CREAT | O_EXCL, 0644)) < 0
 			&& errno == EEXIST)
 	{
-		fname[len]	= '(';
-		fname[len + 1]	= ++i + '0';
-		fname[len + 2]	= ')';
+		fname[len] = '(';
+		fname[len + 1] = ++i + '0';
+		fname[len + 2] = ')';
 	}
 	ft_strdel(&fname);
 	return (fd);

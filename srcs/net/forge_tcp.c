@@ -1,20 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   forge_tcp.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/07 18:02:34 by jhalford          #+#    #+#             */
+/*   Updated: 2017/10/07 18:17:04 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "net.h"
 
 void	tcphdr_init(struct tcphdr *header)
 {
 	memset(header, 0, sizeof(*header));
-	header->source = htons(0);
-	header->dest = htons(0);
-	header->seq = epoch_micro();
-	header->ack_seq = 0;
-	header->doff = 5;
-	header->fin = 0;
-	header->syn = 0;
-	header->rst = 0;
-	header->psh = 0;
-	header->ack = 0;
-	header->urg = 0;
-	header->window = htons(1024);
-	header->check = 0;
-	header->urg_ptr = 0;
+	header->th_sport = htons(0);
+	header->th_dport = htons(0);
+	header->th_seq = epoch_micro();
+	header->th_ack = 0;
+	header->th_off = 5;
+	header->th_flags = 0;
+	header->th_win = htons(1024);
+	header->th_sum = 0;
+	header->th_urp = 0;
 }

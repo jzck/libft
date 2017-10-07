@@ -1,10 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rs.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/07 17:57:54 by jhalford          #+#    #+#             */
+/*   Updated: 2017/10/07 18:19:47 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <math.h>
 
-double sqrt(double x);
 struct s_stats g_rs = {0, 0, 0, 0, 0, 0, 0};
 
-void	rs_clear()
+double	sqrt(double x);
+
+void	rs_clear(void)
 {
 	g_rs.count = 0;
 	g_rs.min = DBL_MAX;
@@ -31,11 +44,8 @@ void	rs_push(double n)
 	}
 }
 
-void	rs_calcmore()
+void	rs_calcmore(void)
 {
-	/* void	*libm; */
-	/* double	(*sqrt)(double); */
-
 	if (g_rs.count == 0)
 	{
 		g_rs.min = 0;
@@ -48,10 +58,5 @@ void	rs_calcmore()
 		return ;
 	}
 	g_rs.var = g_rs.m / (g_rs.count - 1);
-	/* if ((libm = dlopen("libm.dylib", 0)) == NULL) */
-	/* 	printf("%s\n", dlerror()); */
-	/* else if ((sqrt = dlsym(libm, "sqrt")) == NULL) */
-	/* 	printf("%s\n", dlerror()); */
-	/* else */
 	g_rs.stdev = sqrt(g_rs.var);
 }

@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reserve_port.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/07 18:02:55 by jhalford          #+#    #+#             */
+/*   Updated: 2017/10/07 18:03:15 by jhalford         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "net.h"
 
 int	reserve_port(int *port)
 {
-	struct sockaddr_in sa;
-	int sockfd;
-	unsigned short i;
+	struct sockaddr_in	sa;
+	int					sockfd;
+	unsigned short		i;
 
 	if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
 		return (1);
