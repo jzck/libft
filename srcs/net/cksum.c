@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mytime_free.c                                   :+:      :+:    :+:   */
+/*   cksum.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/25 11:45:29 by jhalford          #+#    #+#             */
-/*   Updated: 2017/02/18 13:11:33 by jhalford         ###   ########.fr       */
+/*   Created: 2017/10/08 12:45:43 by jhalford          #+#    #+#             */
+/*   Updated: 2017/10/08 12:48:41 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "net.h"
 
-void	ft_mytime_free(t_mytime **time)
+unsigned short	cksum(void *b, int len)
 {
-	ft_strdel(&(*time)->year);
-	ft_strdel(&(*time)->month);
-	ft_strdel(&(*time)->day);
-	ft_strdel(&(*time)->hour);
-	ft_strdel(&(*time)->min);
-	ft_strdel(&(*time)->sec);
-	ft_memdel((void **)time);
+	unsigned short	*buf;
+	unsigned int	sum;
+
+	buf = b;
+	sum = 0;
+	while (len > 1)
+	{
+		sum += *((unsigned short*)buf++);
+		len -= 2;
+	}
+	if (len == 1)
+		sum += *(unsigned char*)buf;
+	sum = (sum >> 16) + (sum & 0xFFFF);
+	return (~(sum + (sum >> 16)));
 }

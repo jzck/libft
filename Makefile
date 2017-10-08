@@ -131,6 +131,7 @@ mem/ft_memdel.c\
 mem/ft_memmove.c\
 mem/ft_memset.c\
 mem/ft_realloc.c\
+net/cksum.c\
 net/create_client.c\
 net/create_server.c\
 net/forge_ip.c\
@@ -203,10 +204,7 @@ str/ft_strsub.c\
 str/ft_strtok.c\
 str/ft_strtrim.c\
 sys/open_new.c\
-time/epoch.c\
-time/ft_mytime_free.c\
-time/ft_mytime_get.c\
-time/ft_time_isrecent.c
+time/epoch.c
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))

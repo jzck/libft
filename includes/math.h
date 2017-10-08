@@ -6,20 +6,21 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 15:41:59 by jhalford          #+#    #+#             */
-/*   Updated: 2017/05/16 17:30:35 by ariard           ###   ########.fr       */
+/*   Updated: 2017/10/08 12:57:23 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATH_H
 # define MATH_H
 
-# define FT_WS(x) (x == ' ' || x == '\t' || x == '\n')
-# define FT_ABS(x) (((x) < 0) ? -(x) : (x))
-# define FT_NEG(x) ((x) < 0)
-# define FT_POS(x) ((x) > 0)
-# define FT_MIN(a, b) ((a) < (b) ? (a) : (b))
-# define FT_MAX(a, b) ((a) > (b) ? (a) : (b))
-# define FT_DIST(a, b) FT_ABS((a) - (b))
+# define FT_WS(x) 		(x == ' ' || x == '\t' || x == '\n')
+# define FT_ABS(x) 		(((x) < 0) ? -(x) : (x))
+# define FT_NEG(x) 		((x) < 0)
+# define FT_POS(x) 		((x) > 0)
+# define FT_MIN(a, b) 	((a) < (b) ? (a) : (b))
+# define FT_MAX(a, b) 	((a) > (b) ? (a) : (b))
+# define FT_DIST(a, b) 	FT_ABS((a) - (b))
+# define FT_PCT(a, t)	(t ? 100 * (float)(t - a)/(float)t : 0)
 
 char	*ft_itoa(int n);
 char	*ft_itoa_base(int nbr, char *base, char *flags);

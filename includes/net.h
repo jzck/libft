@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 18:06:12 by jhalford          #+#    #+#             */
-/*   Updated: 2017/10/07 18:14:42 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/10/08 14:36:35 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,21 @@
 
 # include "mytime.h"
 
-int		create_server(int port, int backlog, char *protoname);
-int		create_client(char *addr, int port, char *protoname);
-void	listener(int domain, int sock, int proto,
-		void (*handler)(void *buf, int bytes, struct sockaddr_in *addr));
+unsigned short	cksum(void *b, int len);
+int				create_server(int port, int backlog, char *protoname);
+int				create_client(char *addr, int port, char *protoname);
+void			listener(int domain, int sock, int proto,
+			void (*handler)(void *buf, int bytes, struct sockaddr_in *addr));
 
-int		net_send(int sock, char *msg, int size);
-int		net_send_large(int sock, char *msg, int size);
-int		net_get(int sock, char *msg, int size);
-int		net_get_fd(int sock, int fd, int size);
-int		net_get_large(int sock, int fd);
+int				net_send(int sock, char *msg, int size);
+int				net_send_large(int sock, char *msg, int size);
+int				net_get(int sock, char *msg, int size);
+int				net_get_fd(int sock, int fd, int size);
+int				net_get_large(int sock, int fd);
 
-int		reserve_port(int *port);
+int				reserve_port(int *port);
 
-void	tcphdr_init(struct tcphdr *header);
-void	iphdr_init(struct ip *header);
+void			tcphdr_init(struct tcphdr *header);
+void			iphdr_init(struct ip *header);
 
 #endif

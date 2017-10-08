@@ -6,7 +6,7 @@
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 11:43:12 by jhalford          #+#    #+#             */
-/*   Updated: 2017/02/18 13:11:26 by jhalford         ###   ########.fr       */
+/*   Updated: 2017/10/08 13:16:26 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,7 @@
 
 # include "libft.h"
 
-struct		s_mytime
-{
-	char	*year;
-	char	*month;
-	char	*day;
-	char	*hour;
-	char	*min;
-	char	*sec;
-};
-
-typedef struct s_mytime		t_mytime;
-
-int			ft_time_isrecent(time_t event);
-t_mytime	*ft_mytime_get(time_t epoch);
-void		ft_mytime_free(t_mytime **time);
-size_t		epoch_micro(void);
+uint64_t	epoch_micro(void);
+double		time_milli(void);
 
 #endif
