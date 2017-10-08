@@ -134,11 +134,12 @@ mem/ft_realloc.c\
 net/cksum.c\
 net/create_client.c\
 net/create_server.c\
-net/forge_ip.c\
-net/forge_tcp.c\
+net/host.c\
+net/ip.c\
 net/net_get.c\
 net/net_send.c\
 net/reserve_port.c\
+net/tcp.c\
 path/ft_path_notdir.c\
 printing/ft_putchar.c\
 printing/ft_putendl.c\

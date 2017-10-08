@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   forge_ip.c                                         :+:      :+:    :+:   */
+/*   forge_tcp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/07 18:02:39 by jhalford          #+#    #+#             */
-/*   Updated: 2017/10/07 18:18:07 by jhalford         ###   ########.fr       */
+/*   Created: 2017/10/07 18:02:34 by jhalford          #+#    #+#             */
+/*   Updated: 2017/10/08 15:54:16 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "net.h"
 
-void	iphdr_init(struct ip *header)
+void	tcp_hdrinit(struct tcphdr *header)
 {
 	memset(header, 0, sizeof(*header));
-	header->ip_v = 4;
-	header->ip_hl = 5;
-	header->ip_tos = 0;
-	header->ip_len = 0;
-	header->ip_id = ntohl(epoch_micro());
-	header->ip_off = 0;
-	header->ip_ttl = 255;
-	header->ip_p = 0;
-	header->ip_sum = 0;
-	memset(&header->ip_src, 0, sizeof(struct in_addr));
-	memset(&header->ip_dst, 0, sizeof(struct in_addr));
+	header->th_sport = htons(0);
+	header->th_dport = htons(0);
+	header->th_seq = epoch_micro();
+	header->th_ack = 0;
+	header->th_off = 5;
+	header->th_flags = 0;
+	header->th_win = htons(1024);
+	header->th_sum = 0;
+	header->th_urp = 0;
 }

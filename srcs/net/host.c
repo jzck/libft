@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   forge_tcp.c                                        :+:      :+:    :+:   */
+/*   host.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhalford <jack@crans.org>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/07 18:02:34 by jhalford          #+#    #+#             */
-/*   Updated: 2017/10/07 18:17:04 by jhalford         ###   ########.fr       */
+/*   Created: 2017/10/08 15:47:45 by jhalford          #+#    #+#             */
+/*   Updated: 2017/10/08 15:58:30 by jhalford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "net.h"
 
-void	tcphdr_init(struct tcphdr *header)
+int		host_format(struct sockaddr *addr)
 {
-	memset(header, 0, sizeof(*header));
-	header->th_sport = htons(0);
-	header->th_dport = htons(0);
-	header->th_seq = epoch_micro();
-	header->th_ack = 0;
-	header->th_off = 5;
-	header->th_flags = 0;
-	header->th_win = htons(1024);
-	header->th_sum = 0;
-	header->th_urp = 0;
+	char	dn[1024];
+	char	sv[20];
+	char	ip[INET_ADDRSTRLEN];
+
+	if (getnameinfo(addr, sizeof(*addr), dn, sizeof(dn),
+				sv, sizeof(sv), 0))
+	{
+		perror("getnameinfo");
+		return (1);
+	}
+	printf(" %s (%s)", dn,
+			inet_ntop(AF_INET, &(((struct sockaddr_in*)addr)->sin_addr),
+				ip, INET_ADDRSTRLEN));
+	return (0);
 }
