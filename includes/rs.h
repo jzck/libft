@@ -17,18 +17,20 @@
 # include <dlfcn.h>
 # include <math.h>
 
-extern struct	s_stats {
-	int		count;
-	double	min;
-	double	max;
-	double	avg;
-	double	m;
-	double	stdev;
-	double	var;
-} g_rs;
+typedef struct s_rs	t_rs;
 
-void			rs_clear();
-void			rs_push(double n);
-void			rs_calcmore();
+struct				s_rs {
+	int				count;
+	double			min;
+	double			max;
+	double			avg;
+	double			m;
+	double			stdev;
+	double			var;
+};
+
+void					rs_init(t_rs *rs);
+void					rs_push(t_rs *rs, double n);
+void					rs_final(t_rs *rs);
 
 #endif
