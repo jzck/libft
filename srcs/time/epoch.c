@@ -27,5 +27,5 @@ double		time_milli(void)
 
 	if (gettimeofday(&tv, NULL))
 		return (0);
-	return ((double)((double)tv.tv_sec / 1000. + tv.tv_usec * 1000.));
+	return ((double)(tv.tv_sec * 1000. + (double)tv.tv_usec / 1000.));
 }

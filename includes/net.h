@@ -42,7 +42,7 @@ int				host_format(struct sockaddr *addr);
 int				create_server(int port, int backlog, char *protoname);
 int				create_client(char *addr, int port, char *protoname);
 void			listener(int domain, int sock, int proto,
-			void (*handler)(void *buf, int bytes, struct sockaddr_in *addr));
+			void (*handler)(void *buf, int bytes, struct sockaddr *addr));
 
 /*
 **		lazy framing

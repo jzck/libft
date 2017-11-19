@@ -30,10 +30,10 @@ int		create_client(char *addr, int port, char *protoname)
 }
 
 void	listener(int domain, int sock, int proto,
-		void (*handler)(void *buf, int bytes, struct sockaddr_in *addr))
+		void (*handler)(void *buf, int bytes, struct sockaddr *addr))
 {
 	int					sd;
-	struct sockaddr_in	addr;
+	struct sockaddr		addr;
 	unsigned char		buf[1024];
 	int					bytes;
 	socklen_t			len;
@@ -49,7 +49,7 @@ void	listener(int domain, int sock, int proto,
 	{
 		bzero(buf, sizeof(buf));
 		bytes = recvfrom(sd, buf, sizeof(buf), 0,
-				(struct sockaddr*)&addr, &len);
+				&addr, &len);
 		if (bytes > 0 && handler)
 			handler(buf, bytes, &addr);
 		else
