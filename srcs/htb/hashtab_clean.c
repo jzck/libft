@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hashtab_lookup.c                                   :+:      :+:    :+:   */
+/*   hashtab_clean.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ariard <ariard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/15 19:38:41 by ariard            #+#    #+#             */
-/*   Updated: 2018/02/08 15:53:02 by ariard           ###   ########.fr       */
+/*   Created: 2018/02/08 22:08:40 by ariard            #+#    #+#             */
+/*   Updated: 2018/02/08 22:19:49 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "hashtab.h"
 
-t_list	*hashtab_lookup(t_hashtab *htb, void *key,
-		int (*match)(const void *data_ref, const void *key))	
-
+void		hashtab_clean(t_hashtab *htb, int (*destroy)())
 {
 	int		bucket;
-	
-	if ((bucket = htb->hashfunc(key, htb->capacity)))
-		return (ft_lst_find(htb->head[bucket], key, match));
-	return (NULL);
+
+	bucket = -1;
+	while (++bucket < htb->capacity)
+		ft_lstiter(htb->head[bucket], destroy, NULL);
 }

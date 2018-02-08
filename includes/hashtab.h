@@ -6,7 +6,7 @@
 /*   By: ariard <ariard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 19:16:49 by ariard            #+#    #+#             */
-/*   Updated: 2017/05/16 21:03:50 by ariard           ###   ########.fr       */
+/*   Updated: 2018/02/08 22:30:13 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ struct s_list	*hashtab_remove(t_hashtab *htb, void *key,
 				int (*match)(const void *data_ref, const void *key));
 
 void			hashtab_destroy(t_hashtab *htb, void (*destroy)());
+
+void			hashtab_clean(t_hashtab *htb, int (*destroy)());
 
 void			hashtab_print(t_hashtab *htb, int (*printer)());
 
