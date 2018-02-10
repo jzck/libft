@@ -6,7 +6,7 @@
 /*   By: jhalford <jhalford@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 15:52:57 by jhalford          #+#    #+#             */
-/*   Updated: 2017/04/02 15:22:20 by jhalford         ###   ########.fr       */
+/*   Updated: 2018/02/10 20:21:56 by ariard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_conv	g_convs[] =
 int	ft_vdprintf(int fd, const char *format, va_list ap)
 {
 	char	*ret;
-	char	size;
+	int		size;
 
 	ret = NULL;
 	size = ft_vasprintf(&ret, format, ap);
