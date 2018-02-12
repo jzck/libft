@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rs.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ariard <ariard@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/02/12 19:24:33 by ariard            #+#    #+#             */
+/*   Updated: 2018/02/12 19:25:31 by ariard           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <math.h>
 
 struct s_stats g_rs = {0, 0, 0, 0, 0, 0, 0};
 
-void	rs_clear()
+void	rs_clear(void)
 {
 	g_rs.count = 0;
 	g_rs.min = DBL_MAX;
@@ -30,7 +42,7 @@ void	rs_push(double n)
 	}
 }
 
-void	rs_calcmore()
+void	rs_calcmore(void)
 {
 	void	*libm;
 	double	(*sqrt)(double);
